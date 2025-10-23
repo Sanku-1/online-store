@@ -8,6 +8,9 @@ This application allows a user to view a list of products provided via csv, and 
 - As a business owner, I want to be able to input my product inventory, so that users can view what is for sale.
 - As a user, I want to receive immediate feedback, so I can understand what to do next.
 - As a customer, I want the shopping cart to show each unique item only once with its total quantity, so that I can easily see how many of each item I’m buying without the cart being cluttered with duplicates.
+- As a customer, I want to add products from the inventory to my cart by entering their ID, so that I can prepare for checkout.
+- As a customer, I want to view the contents of my shopping cart, so that I can review the items I plan to purchase.
+- As a customer, I want the store system to create a sales receipt file after I check out, so that I have a record of my purchase saved for future reference
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
 
@@ -57,5 +60,6 @@ List resources such as tutorials, articles, or documentation that helped you dur
 ## Thanks
 
 - Thank you to Raymond Maroun for continuous support and guidance.
+
 
 
