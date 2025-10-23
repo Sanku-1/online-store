@@ -87,7 +87,12 @@ public class Store {
         String userProductIdInput = scanner.nextLine();
         for (Product product : inventory) {
             if (userProductIdInput.equalsIgnoreCase(product.getId())) {
-                cart.add(product);
+                if (product.getCartQuantity() == 0) {
+                    cart.add(product);
+                    product.incrementCartQuantity();
+                } else {
+                    product.incrementCartQuantity();
+                }
             }
         }
     }
@@ -99,14 +104,15 @@ public class Store {
     public static void displayCart(ArrayList<Product> cart, Scanner scanner) {
         double cartTotalPrice = 0;
         for (Product product : cart) {
-            System.out.println(product.toString());
-            cartTotalPrice += product.getPrice();
+            System.out.println(product.toStringCart());
+            cartTotalPrice += (product.getPrice() * product.getCartQuantity());
         }
         System.out.printf("Total Cost: $%.2f", cartTotalPrice);
 
         String command = "";
         boolean isDone = false;
         while (!isDone) {
+            System.out.println("\n");
             System.out.println("\nShopping Cart Options:");
             System.out.println("C. Check Out");
             System.out.println("X. Exit");
@@ -117,7 +123,7 @@ public class Store {
                 continue;
             }
 
-            command = scanner.nextLine();
+            command = scanner.nextLine().toUpperCase();
 
             switch (command) {
                 case "C" -> checkOut(cart, cartTotalPrice, scanner);
@@ -153,7 +159,7 @@ public class Store {
                 continue;
             }
 
-            checkOutCommand = scanner.nextLine();
+            checkOutCommand = scanner.nextLine().toUpperCase();
 
             switch (checkOutCommand) {
                 case "Y":
@@ -164,8 +170,9 @@ public class Store {
                         double change = totalAmount - userPaymentInput;
                         System.out.println("\nReceipt:");
                         for (Product product : cart) {
-                            System.out.println(product.toString());
+                            System.out.println(product.toStringCart());
                         }
+                        System.out.println("----------------------------------");
                         System.out.printf("Order Total: $%.2f", totalAmount);
                         System.out.printf("\nPayment Received: $%.2f", userPaymentInput);
                         System.out.printf("\nChange: $%.2f", -change);
