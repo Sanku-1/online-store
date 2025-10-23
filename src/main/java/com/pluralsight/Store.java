@@ -110,8 +110,7 @@ public class Store {
             System.out.println(product.toString());
             cartTotalPrice += product.getPrice();
         }
-        String priceOutput = String.format("Total Cost: $%.2f", cartTotalPrice);
-        System.out.println(priceOutput);
+        System.out.printf("Total Cost: $%.2f", cartTotalPrice);
 
         String command = "";
         boolean isDone = false;
@@ -147,7 +146,51 @@ public class Store {
     public static void checkOut(ArrayList<Product> cart,
                                 double totalAmount,
                                 Scanner scanner) {
+
         // TODO: implement steps listed above
+        String checkOutCommand = "";
+        boolean isDone = false;
+        while (!isDone) {
+            System.out.println("\nPlease confirm that you would like to make this purchase:");
+            System.out.println("Y. Check Out");
+            System.out.println("N. Exit");
+            System.out.print("Your choice: ");
+
+            if (!scanner.hasNextLine()) {
+                System.out.println("Please enter Y or N.");
+                continue;
+            }
+
+            checkOutCommand = scanner.nextLine();
+
+            switch (checkOutCommand) {
+                case "Y":
+                    System.out.println("Please enter your payment amount:");
+                    double userPaymentInput = scanner.nextDouble();
+                    scanner.nextLine();                 // discard bad input
+                    if (userPaymentInput >= totalAmount) {
+                        double change = totalAmount - userPaymentInput;
+                        System.out.println("\nReceipt:");
+                        for (Product product : cart) {
+                            System.out.println(product.toString());
+                        }
+                        System.out.printf("Order Total: $%.2f", totalAmount);
+                        System.out.printf("Payment Received: $%.2f", userPaymentInput);
+                        System.out.printf("Change: $%.2f", change);
+
+
+                    } else {
+                        System.out.println("You haven't provided the necessary amount to complete your purchase, please try again.");
+                        break;
+                    }
+                case "N":
+                    isDone = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+                    break;
+            }
+        }
     }
 
     /**
@@ -157,6 +200,12 @@ public class Store {
      */
     public static Product findProductById(String id, ArrayList<Product> inventory) {
         // TODO: loop over the list and compare ids
-        return null;
+        for (Product product : inventory) {
+            if (id.equalsIgnoreCase(product.getId())) {
+                return product;
+            } else {
+                return null;
+            }
+        }
     }
 }
