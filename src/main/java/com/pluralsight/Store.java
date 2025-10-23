@@ -110,8 +110,31 @@ public class Store {
             System.out.println(product.toString());
             cartTotalPrice += product.getPrice();
         }
-        String priceOutput = String.format("Total Cost: %.2f", cartTotalPrice);
+        String priceOutput = String.format("Total Cost: $%.2f", cartTotalPrice);
         System.out.println(priceOutput);
+
+        String command = "";
+        boolean isDone = false;
+        while (!isDone) {
+            System.out.println("\nShopping Cart Options:");
+            System.out.println("C. Check Out");
+            System.out.println("X. Exit");
+            System.out.print("Your choice: ");
+
+            if (!scanner.hasNextLine()) {
+                System.out.println("Please enter C or X.");
+                continue;
+            }
+
+            command = scanner.nextLine();
+
+            switch (command) {
+                case "C" -> checkOut(cart, cartTotalPrice, scanner);
+                case "X" -> isDone = true;
+                default -> System.out.println("Invalid choice!");
+
+            }
+        }
     }
 
     /**
