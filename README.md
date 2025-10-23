@@ -1,17 +1,13 @@
-# Project Title
+# Online Store
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+This application allws a user to view a list of products provided via csv, and add them to a shopping cart based on their selections for a final check out/purchase.
 
 ## User Stories
-
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
+- As a business owner, I want to be able to input my product inventory, so that users can view what is for sale.
 - As a user, I want to receive immediate feedback, so I can understand what to do next.
-
-## Setup
+- As a customer, I want the shopping cart to show each unique item only once with its total quantity, so that I can easily see how many of each item I’m buying without the cart being cluttered with duplicates.
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
 
@@ -32,8 +28,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17
 
 ## Demo
 
@@ -45,24 +40,24 @@ Include screenshots or GIFs that show your application in action. Use tools like
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+- Format the products in the CLI a bit more for clarity/aesthetics
+- Create log of Sales Receipts
 
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+- LTCA Workbooks
+- geeksforgeeks.org/java
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Stephen Anku** - Wrote the code for this project
 
 ## Thanks
 
 Express gratitude towards those who provided help, guidance, or resources:
 
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- Thank you to Raymond Maroun for continuous support and guidance.
+
+
