@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Starter code for the Online Store workshop.
- * Students will complete the TODO sections to make the program work.
- */
+
 public class Store {
 
     public static void main(String[] args) {
@@ -100,11 +97,6 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(ArrayList<Product> cart, Scanner scanner) {
-        // TODO:
-        //   • list each product in the cart
-        //   • compute the total cost
-        //   • ask the user whether to check out (C) or return (X)
-        //   • if C, call checkOut(cart, totalAmount, scanner)
         double cartTotalPrice = 0;
         for (Product product : cart) {
             System.out.println(product.toString());
@@ -175,8 +167,10 @@ public class Store {
                             System.out.println(product.toString());
                         }
                         System.out.printf("Order Total: $%.2f", totalAmount);
-                        System.out.printf("Payment Received: $%.2f", userPaymentInput);
-                        System.out.printf("Change: $%.2f", change);
+                        System.out.printf("\nPayment Received: $%.2f", userPaymentInput);
+                        System.out.printf("\nChange: $%.2f", -change);
+                        cart.clear();
+                        isDone = true;
 
 
                     } else {
@@ -189,22 +183,6 @@ public class Store {
                 default:
                     System.out.println("Invalid choice");
                     break;
-            }
-        }
-    }
-
-    /**
-     * Searches a list for a product by its id.
-     *
-     * @return the matching Product, or null if not found
-     */
-    public static Product findProductById(String id, ArrayList<Product> inventory) {
-        // TODO: loop over the list and compare ids
-        for (Product product : inventory) {
-            if (id.equalsIgnoreCase(product.getId())) {
-                return product;
-            } else {
-                return null;
             }
         }
     }
