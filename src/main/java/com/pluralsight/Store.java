@@ -83,8 +83,6 @@ public class Store {
     public static void displayProducts(ArrayList<Product> inventory,
                                        ArrayList<Product> cart,
                                        Scanner scanner) {
-        // TODO: show each product (id, name, price),
-        //       prompt for an id, find that product, add to cart
         for (Product product : inventory) {
             System.out.println(product.toString());
         }
@@ -107,6 +105,13 @@ public class Store {
         //   • compute the total cost
         //   • ask the user whether to check out (C) or return (X)
         //   • if C, call checkOut(cart, totalAmount, scanner)
+        double cartTotalPrice = 0;
+        for (Product product : cart) {
+            System.out.println(product.toString());
+            cartTotalPrice += product.getPrice();
+        }
+        String priceOutput = String.format("Total Cost: %.2f", cartTotalPrice);
+        System.out.println(priceOutput);
     }
 
     /**
