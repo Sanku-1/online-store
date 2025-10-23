@@ -1,6 +1,9 @@
 
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,39 +15,43 @@ public class Store {
 
     public static void main(String[] args) {
 
-        // Create lists for inventory and the shopping cart
-        ArrayList<Product> inventory = new ArrayList<>();
-        ArrayList<Product> cart = new ArrayList<>();
+        try {
+            // Create lists for inventory and the shopping cart
+            ArrayList<Product> inventory = new ArrayList<>();
+            ArrayList<Product> cart = new ArrayList<>();
 
-        // Load inventory from the data file (pipe-delimited: id|name|price)
-        loadInventory("products.csv", inventory);
+            // Load inventory from the data file (pipe-delimited: id|name|price)
+            loadInventory("products.csv", inventory);
 
-        // Main menu loop
-        Scanner scanner = new Scanner(System.in);
-        int choice = -1;
-        while (choice != 3) {
-            System.out.println("\nWelcome to the Online Store!");
-            System.out.println("1. Show Products");
-            System.out.println("2. Show Cart");
-            System.out.println("3. Exit");
-            System.out.print("Your choice: ");
+            // Main menu loop
+            Scanner scanner = new Scanner(System.in);
+            int choice = -1;
+            while (choice != 3) {
+                System.out.println("\nWelcome to the Online Store!");
+                System.out.println("1. Show Products");
+                System.out.println("2. Show Cart");
+                System.out.println("3. Exit");
+                System.out.print("Your choice: ");
 
-            if (!scanner.hasNextInt()) {
-                System.out.println("Please enter 1, 2, or 3.");
-                scanner.nextLine();                 // discard bad input
-                continue;
+                if (!scanner.hasNextInt()) {
+                    System.out.println("Please enter 1, 2, or 3.");
+                    scanner.nextLine();                 // discard bad input
+                    continue;
+                }
+                choice = scanner.nextInt();
+                scanner.nextLine();                     // clear newline
+
+                switch (choice) {
+                    case 1 -> displayProducts(inventory, cart, scanner);
+                    case 2 -> displayCart(cart, scanner);
+                    case 3 -> System.out.println("Thank you for shopping with us!");
+                    default -> System.out.println("Invalid choice!");
+                }
             }
-            choice = scanner.nextInt();
-            scanner.nextLine();                     // clear newline
-
-            switch (choice) {
-                case 1 -> displayProducts(inventory, cart, scanner);
-                case 2 -> displayCart(cart, scanner);
-                case 3 -> System.out.println("Thank you for shopping with us!");
-                default -> System.out.println("Invalid choice!");
-            }
+            scanner.close();
+        } catch (Exception e) {
+            System.err.println("Error");
         }
-        scanner.close();
     }
 
     /**
@@ -55,9 +62,18 @@ public class Store {
      * Example line:
      * A17|Wireless Mouse|19.99
      */
-    public static void loadInventory(String fileName, ArrayList<Product> inventory) {
-        // TODO: read each line, split on "|",
-        //       create a Product object, and add it to the inventory list
+    public static void loadInventory(String fileName, ArrayList<Product> inventory) throws IOException {
+        BufferedReader bufReader = new BufferedReader(new FileReader(fileName));
+        String line;
+        while ((line = bufReader.readLine()) != null) {
+            String[] tokens = line.split("\\|");
+            String productId = tokens[0];
+            String productName = tokens[1];
+            double productPrice = Double.parseDouble(tokens[2]);
+            Product product = new Product(productId, productName, productPrice);
+            inventory.add(product);
+        }
+        bufReader.close();
     }
 
     /**
@@ -69,6 +85,7 @@ public class Store {
                                        Scanner scanner) {
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
+
     }
 
     /**
