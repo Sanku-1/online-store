@@ -2,7 +2,7 @@
 
 ## Description of the Project
 
-This application allws a user to view a list of products provided via csv, and add them to a shopping cart based on their selections for a final check out/purchase.
+This application allows a user to view a list of products provided via csv, and add them to a shopping cart based on their selections for a final check out/purchase.
 
 ## User Stories
 - As a business owner, I want to be able to input my product inventory, so that users can view what is for sale.
@@ -32,9 +32,9 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+[Main Menu](https://github.com/Sanku-1/online-store/blob/79abe8aa60992fce33895df90182a8b53ea55246/src/main/resources/Screenshot%202025-10-23%20at%208.40.41%E2%80%AFAM.png) \
+[Product List](https://github.com/Sanku-1/online-store/blob/79abe8aa60992fce33895df90182a8b53ea55246/src/main/resources/Screenshot%202025-10-23%20at%208.41.02%E2%80%AFAM.png) \
+[Checkout Calculator](https://github.com/Sanku-1/online-store/blob/79abe8aa60992fce33895df90182a8b53ea55246/src/main/resources/Screenshot%202025-10-23%20at%208.43.24%E2%80%AFAM.png)
 
 ## Future Work
 
@@ -55,8 +55,6 @@ List resources such as tutorials, articles, or documentation that helped you dur
 - **Stephen Anku** - Wrote the code for this project
 
 ## Thanks
-
-Express gratitude towards those who provided help, guidance, or resources:
 
 - Thank you to Raymond Maroun for continuous support and guidance.
 
